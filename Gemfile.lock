@@ -1,0 +1,44 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    awesome_print (1.8.0)
+    colorize (0.8.1)
+    elasticsearch (7.9.0)
+      elasticsearch-api (= 7.9.0)
+      elasticsearch-transport (= 7.9.0)
+    elasticsearch-api (7.9.0)
+      multi_json
+    elasticsearch-transport (7.9.0)
+      faraday (~> 1)
+      multi_json
+    ethon (0.12.0)
+      ffi (>= 1.3.0)
+    faraday (1.1.0)
+      multipart-post (>= 1.2, < 3)
+      ruby2_keywords
+    ffi (1.13.1)
+    inifile (3.0.0)
+    multi_json (1.15.0)
+    multipart-post (2.1.1)
+    mysql2 (0.5.3)
+    pg (1.2.3)
+    ruby2_keywords (0.0.2)
+    sequel (5.38.0)
+    typhoeus (1.3.1)
+      ethon (>= 0.9.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  awesome_print
+  colorize
+  elasticsearch (~> 7.4)
+  inifile
+  mysql2 (~> 0.5.2)
+  pg (= 1.2.3)
+  sequel
+  typhoeus (~> 1.3.1)
+
+BUNDLED WITH
+   2.1.4

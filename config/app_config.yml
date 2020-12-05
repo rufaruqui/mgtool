@@ -1,0 +1,82 @@
+##
+##Config for Development Environment###
+##
+development:
+  PG:
+    adapter: 'postgresql' 
+    host: 192.168.0.3
+    database: railsdb_dev
+    port: 5432
+    user: railsdb
+    password: railsdb@1234
+    timeout: 600000
+  
+  RPG:
+    adapter: 'postgresql' 
+    host: ec2-18-140-35-29.ap-southeast-1.compute.amazonaws.com
+    database: ImportToolDb
+    ip: 18.140.35.29 
+    port: 15433
+    user: pgadmin
+    password: F8FvujfkDVHC3BAR
+    timeout: 600000
+
+  LMYSQL:
+    adapter: 'mysql2'
+    host: localhost
+    database: apollo
+    user: radialadmin
+    password: radialadmin@1234
+    timeout: 600000
+
+  MYSQL:
+    adapter: 'mysql2'
+    host: radial-migation.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
+    database: Apollo
+    user: radialadmin
+    password: n2pDjKFYzMFAzPbX
+    timeout: 600000
+    port: 3306
+
+  ES:
+    url: "http://192.168.0.3:9200" #"http://localhost:9200"
+    retry_on_faliure: 5
+    request_time_out: 30
+    #adapter: :typhoes
+  RES:
+    url: "https://seekdev0.lbh.one/"
+    user: elastic
+    password: 6nHYWJhv6CbAN3qK
+
+##
+##Config for Production Environment###
+##
+
+production:
+  MYSQL:
+    adapter: 'mysql2'
+    host: radial-migation.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
+    database: Apollo
+    user: radialadmin
+    password: n2pDjKFYzMFAzPbX
+    timeout: 600000
+    port: 3306
+
+  PG:
+    adapter: 'postgresql' 
+    host: ec2-18-140-35-29.ap-southeast-1.compute.amazonaws.com
+    database: ImportToolDb
+    ip: 18.140.35.29 
+    port: 15433
+    user: pgadmin
+    password: F8FvujfkDVHC3BAR
+    timeout: 600000
+  ES:
+    url: "https://seekdev0.lbh.one/"
+    user: elastic
+    password: 6nHYWJhv6CbAN3qK
+
+# VPN:  
+#   url: k0nnect.lbhpartners.com:8560
+#   user: rokon
+#   pass: k34-{}231###JJhj47mNaQ$

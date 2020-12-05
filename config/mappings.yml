@@ -1,0 +1,567 @@
+# [:Broker_ID, :Report_Date, :Row_Number, :Loan_Writer, :Line_of_Business,
+# :Commission_Type, :Funder, :Client, :Account_Number, :Period, :Loan_Amount, 
+# :Rate, :Commission, :GST, :Total_Paid, :Referrer, :Settlement_Date, :Discharge_Date, 
+# :Trail_Rate, :Payment_No, :Row_Accepted, :File_Name] 
+
+Import_AFG1:
+  aggregator: "AFG"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Client
+    loanAccountNo: :Account_Number
+    totalCommission: :Commission
+    commissionType: :Commission_Type
+    loanAmount: :Loan_Amount
+    loanBalance: :Month_End_Balance
+    settlementDate: :Settlement_Date
+    lender: :Funder
+
+    
+
+#  [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :BI_Name, :Program, :Commission_Type, :Client_Name, :Product, 
+#  :Account_Number, :Funded_Date, :BIN_No, :BIN_Name, :Approved_Facility, :Total_Amount_Paid, 
+#  :GST_Amount_incl_in_Total_Payment, :Net_Upfront_Trail_Amount, :Month_End_Balance, :Row_Accepted]     
+
+
+Import_CBAB1:
+  businessName: "CBA Business"
+  aggregator: "CBAB"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Client_Name
+    loanAccountNo: :Account_Number
+    totalCommission: :Net_Upfront_Trail_Amount
+    commissionType: :Commission_Type
+    loanBalance: :HardCoded
+    loanAmount: :Approved_Facility
+    settlementDate: :Funded_Date
+    lender: :HardCoded
+   
+#  [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Client, :Loan_Acc_No, :Settled, 
+#  :Lender, :Facility, :Commission_Paid, :Commission_Type_ID, :Row_Accepted]  
+
+Import_CSC1:
+  businessName: "Client Solution Centre"
+  aggregator: "CSC"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Client
+    loanAccountNo: :Loan_Acc_no
+    totalCommission: :Commission_Paid
+    commissionType: :Commission_Type_ID #Lookup Commission Type, make a hash, hard coded "Trail" or "Trailing"
+    loanBalance: :Month_End_Balance
+    loanAmount: :Facility
+    settlementDate: :Settled
+    lender: :Lender
+
+# [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Agency, :Consultant, :Commission_Type, :Referring_Office, 
+# :Referred_By, :Lender, :Approval_Date, :Settlement_Date, :Arrears_Date, :Clients, :Loan_Number, :Loan_Amount, 
+# :Loan_Balance, :Settlement_Amount, :Commission_inc_GST, :Fee, :GST, :Total, :Commission_Less_Fee, 
+# :Commission_Percent, :Net_Amount, :Net_GST, :Net_Total, :GST_Applicable, :Original_CommissionID, :Reason, :Row_Accepted]
+
+
+Import_Choice1:
+  aggregator: "Choice"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Clients
+    loanAccountNo: :Loan_Number
+    totalCommission: :Net_Amount
+    commissionType: :Commission_Type
+    loanBalance: :Loan_Balance
+    loanAmount: :Loan_Amount
+    settlementDate: :Settlement_Date
+    lender: :Lender
+
+# [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :RCTI, :Acc_Number, :Loan_Name, 
+# :Loan_Amount, :Loan_Balance, :Date_Settled, :Total_Commission, :GST, :Line_Total, 
+# :Comm_Percentage, :Comm_Paid, :GST_Paid, :Comm_Type,
+#  :Total_Paid, :Lender, :Associate_ID, :Associate_Name, :Loan_Age, :Row_Accepted]
+
+Import_Connective2:
+  businessName: "RCT1 and Account"
+  aggregator: "Connective"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Loan_Name
+    loanAccountNo: :Acc_number
+    totalCommission: :Total_Commission
+    commissionType: :Comm_Type
+    loanBalance: :Loan_Balance
+    loanAmount: :Loan_Amount
+    settlementDate: :Date_Settled
+    lender: :Lender
+
+
+
+
+# [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Agency, :Consultant, :Referring_Office, :Referred_By,
+#      :Lender, :Settlement_Date, :Clients, :Loan_Number, :Loan_Balance, :Trailer_Inc_GST, :Fee, :GST, :Total_Fee,
+#       :Trailer_Less_Fee, :Trailer_Percent, :Net_Amount, :Net_GST, :Net_Total, :GST_Applicable, :Loan_Age,
+#        :Commission_Type_ID, :Row_Accepted] 
+
+Import_Fast1:
+  aggregator: "FAST"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Clients
+    loanAccountNo: :Loan_Number
+    totalCommission: :Net_Amount
+    commissionType: :Commission_Type_ID  #Lookup Commission Type, make a hash, hard coded "TC" "UC"
+    loanBalance: :Loan_Balance
+    loanAmount: :Loan_Amount
+    settlementDate: :Settlement_Date
+    lender: :Lender
+
+# [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Broker, :Lender, :Client, :Ref_No, :Loan_Balance, 
+# :Settlement_Date, :Commission, :Rate_Paid, :GST, :Fee_Commission_Split, :Fees_GST, :Remitted_Net,
+#  :Paid_to_Broker, :Paid_to_Referrer, :Retained, :Row_Accepted, :Commission_Type_ID] 
+
+Import_Finsure1:
+  businessName: "Finsure Financial Services"
+  aggregator: "Finsure"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Client
+    loanAccountNo: :Ref_No
+    totalCommission: :Net_Amount
+    commissionType: :Commission_Type_ID  #Lookup Commission Type, make a hash, hard coded "TC" "UC"
+    loanBalance: :Loan_Balance
+    loanAmount: :Loan_Amount
+    settlementDate: :Settlement_Date
+    lender: :Lender
+
+
+# [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Associate_Code, :AssociateName, :DistributorName, 
+# :Loan_Account, :loa_friendly_name, :Commission_Rate, :Commission, :GSTComponent, :Average_Loan_Balance, 
+# :Row_Accepted, :Start_Date_Calculated] 
+
+
+Import_HLS1:
+  businessName: "HeartLand Seniors"
+  aggregator: "Heartland"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :loa_friendly_name
+    loanAccountNo: :Loan_Account
+    totalCommission: :Commission
+    commissionType: :HardCoded
+    loanBalance: :Average_Loan_Balance
+    loanAmount: :Loan_Amount
+    settlementDate: :Settlement_Date
+    lender: :HardCoded
+
+
+      # OLD TABLE ###
+      # [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :ID, :Broker, :LoansAmt, :Loan_Balance, 
+      # :PercentUtilised, :Upfront, :Trail, :Total, :GST, :Commission, :UpFrontPercentage, :TrailPercentage, 
+      # :Representative, :SettleDate, :AccNumber, :AccName, :Status, :Date_Process, :Row_Accepted, :Comm_type] 
+
+Import_Iden1:
+  businessName: "New Iden"
+  aggregator: "Iden"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :AccName
+    loanAccountNo: :AccNumber
+    totalCommission: :Total
+    commissionType: :Comm_type
+    loanBalance: :Loan_Balance
+    loanAmount: :LoansAmt
+    settlementDate: :SettleDate
+    lender: :HardCoded
+
+# [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Introducer_Individual_Name, 
+# :Loan_Name, :Loan_Number, :Loan_Balance, :Settlement_Date, :Description, :Rate_Percent, 
+# :Amount, :GST, :Total_Inc_GST, :Row_Accepted] 
+
+Import_Iden2:
+  businessName: "New Iden"
+  aggregator: "IDEN"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Loan_Name
+    loanAccountNo: :Loan_Number
+    totalCommission: :Amount
+    commissionType: :HardCoded
+    loanBalance: :Loan_Balance
+    loanAmount: :Loan_Amount
+    settlementDate: :Settlement_Date
+    lender: :HardCoded
+
+#  [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Commission_Type, :Broker, :Lender, :Client, 
+#  :Ref_No, :Settled_Loan, :Loan_Balance, :Settlement_Date, :Commission, :Rate_Paid, :GST,
+#   :Fee_Commission_Split, :Fees_GST, :Remitted_Net, :Paid_to_Broker, :Paid_to_Referrer, :Retained, :Row_Accepted] 
+
+Import_LKT1:
+  aggregator: "LoanKit"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Client
+    loanAccountNo: :Ref_No
+    totalCommission: :Paid_to_Broker
+    commissionType: :Commission_Type
+    loanBalance: :Loan_Balance
+    loanAmount: :Loan_Amount
+    settlementDate: :Settlement_Date
+    lender: :Lender
+
+
+# [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Invoiced_Date, :Introducer_Name,
+#  :Reference, :Customer, :Referrer, :Salesperson, :Loan_Amount, :Loan_Balance, :Income, 
+#  :Settlement_Date, :Lender, :Payment_Type, :Amt_Ex_GST, :GST, :Amt_Inc_GST, :Comments, 
+#  :Row_Accepted] 
+
+## Exclude Payment type "Referrer upfront" deductions
+
+Import_LMKT1:
+  businessName: "LMKT1"
+  aggregator: "LMK"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Customer
+    loanAccountNo: :Reference
+    totalCommission: :Amt_Ex_GST
+    commissionType: :Payment_Type
+    loanBalance: :Loan_Balance
+    loanAmount: :Loan_Amount
+    settlementDate: :Settlement_Date
+    lender: :Lender
+
+# [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :IntroducerID, :IntroducerName, 
+# :LoanAccountID, :Product, :CustomerName, :SettlementDate, :Status, :Discharged, 
+# :OriginalBalance, :AppliedBalance, :CommissionRate, :CommissionDue, :CommissionGST, 
+# :AmountPaid, :PeriodEndDate, :Row_Accepted, :Comm_type] 
+
+Import_Liberty1:
+  businessName: "Liberty Financial"
+  aggregator: "Liberty"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :CustomerName
+    loanAccountNo: :LoanAccountID
+    totalCommission: :CommissionDue
+    commissionType: :HardCoded
+    loanBalance: :AppliedBalance
+    loanAmount: :OriginalBalance
+    settlementDate: :SettlementDate
+    lender: :HardCoded
+
+
+#  [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Client, :Our_Loan_No, 
+#  :Mortgage, :Comm_Rate, :Comm_Calc, :Date_Settled, :Product_Type, :BP_No, 
+#  :BP_Name, :Row_Accepted] 
+
+Import_MEZ1:
+  businessName: "Mortgage Ezy"
+  aggregator: "MEZ"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Client
+    loanAccountNo: :Our_Loan_No
+    totalCommission: :Comm_Calc
+    commissionType: :HardCoded
+    loanBalance: :Mortgage
+    loanAmount: :OriginalBalance
+    settlementDate: :Date_Settled
+    lender: :HardCoded
+
+
+# [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Broker_Number, :Broker_Name, 
+# :Broker_Group, :Account, :Name, :Open_Date, :Trl_Flag, :Open_Bal, :Closing_Bal, 
+# :Avge_Bal, :Commn, :Row_Accepted, :Start_Date_Calculated] 
+
+
+Import_MMBS1:
+  businessName: "Maitland Mutual Buildings Society"
+  aggregator: "MMBS"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Name
+    loanAccountNo: :Account
+    totalCommission: :Commn
+    commissionType: :HardCoded
+    loanBalance: :Closing_Bal
+    loanAmount: :OriginalBalance
+    settlementDate: :Date_Settled #null value, no such field
+    lender: :HardCoded
+
+# [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Commission_Type, :Account_Number,
+#  :Borrower, :Lender, :Settle_Date, :Loan_Amt, :Loan_Bal, :Commission, :Original_Broker, 
+#  :Comm_Rate, :Comm_Payable, :GST, :Total, :Comment, :Row_Accepted] 
+
+Import_OFS1:
+  businessName: "Outsource Financials Services"
+  aggregator: "OFS"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Borrower
+    loanAccountNo: :Account_Number
+    totalCommission: :Comm_Payable
+    commissionType: :Commission_Type
+    loanBalance: :Loan_Bal
+    loanAmount: :Loan_Amt
+    settlementDate: :Settle_Date
+    lender: :Lender
+
+# :File_Name, :Broker_ID, :Report_Date, :Row_Number, :Member_No, :Loan_No, :Sales_No, :Split_Code, 
+# :Client, :Client_Code, :Referrer, :Lender, :Payment_Date, :Type, :Payment, :GST, :Upfront_Loan_Balance, 
+# :Loan_Balance, :Upfront_Percent_Commission, :Settlement_Date, :Loan_Age, :Row_Accepted
+
+
+Import_Plan1:
+  aggregator: "PLAN"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Client
+    loanAccountNo: :Loan_No
+    totalCommission: :Payment
+    commissionType: :Type
+    loanBalance: :Loan_Balance
+    loanAmount: :Loan_Amt
+    settlementDate: :Settlement_Date
+    lender: :Lender
+
+
+
+# [:File_Name, :Broker_ID, :Report_Date, :Row_Number, :Member_No, :Loan_No, :Sales_No, 
+#:Split_Code, :Client, :Client_Code, :Referrer, :Lender, :Payment_Date, :Type, 
+#:Payment, :GST, :Upfront_Loan_Balance, :Loan_Balance, :Upfront_Percent_Commission,
+# :Settlement_Date, :Row_Accepted, :Loan_Age] 
+
+Import_Plan2:
+  aggregator: "PLAN"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Client
+    loanAccountNo: :Loan_No
+    totalCommission: :Payment
+    commissionType: :Type
+    loanBalance: :Loan_Balance
+    loanAmount: :Loan_Amt
+    settlementDate: :Settlement_Date
+    lender: :Lender
+
+
+
+# :File_Name, :Broker_ID, :Report_Date, :Row_Number, :Loan_No, :Borrowers_Name, :
+#  Approved_Amount, :Loan_Balance, :Date_Settled, :Borrowers_Rate, :Trailing_Margin_Percent,
+# :Trailing_Amount_Payable, :Up_Front_Percent, :Up_Front_Amount_Payable, :Total, :GST, 
+#  :Total_Including_GST, :Discharge_Date, :Row_Accepted]
+
+Import_RZ1:
+  aggregator: "RedZed"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Borrowers_Name
+    loanAccountNo: :Loan_No
+    totalCommission: :Total
+    commissionType: :HardCoded
+    loanBalance: :Loan_Balance
+    loanAmount: :Approved_Amount
+    settlementDate: :Date_Settled
+    lender: :HardCoded
+
+
+
+# :File_Name, :Broker_ID, :Report_Date, :Row_Number, :Invoice_To, :ABN, :Borrower, :Loan_ID, :Balance, 
+# :Loan_Amount, :Settlement_Date, :Discharge_Date, :Trail_Rate, :Invoice_No, :Trail_Period, :Trail_Amount, 
+# :GST, :Total, :Payment_Date, :Row_Accepted, :Comm_type 
+
+Import_Thinktank1:
+  businessName: "Think Tank Commercial"
+  aggregator: "ThinkTank"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Borrower
+    loanAccountNo: :Loan_ID
+    totalCommission: :Trail_Amount
+    commissionType: :HardCoded
+    loanBalance: :Balance
+    loanAmount: :Loan_Amount
+    settlementDate: :Settlement_Date
+    lender: :HardCoded
+
+# :File_Name, :Broker_ID, :Report_Date, :Row_Number, :Customer, :Account, :Lender, :Loan_Amt, 
+# :Aggregator, :Referrer, :Writer, :Commission_Type_ID, :Commission_Paid, :Lender_Payment,
+# :VHL_Receipt, :Payment_Rule, :Vision_Collect, :Vision_Actual, :Unknown1, :Unknown2, :Current_Balance, 
+# :Row_Accepted, :Start_Date_Calculated
+
+Import_Vision1:
+  businessName: "Vision Finances and Property Services"
+  aggregator: "Vision"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Customer
+    loanAccountNo: :Account
+    totalCommission: :Commission_Paid
+    commissionType: :Commission_Type_ID
+    loanBalance: :Current_Balance
+    loanAmount: :Loan_Amt
+    settlementDate: :Settlement_Date
+    lender: :Lender
+
+# :File_Name, :Broker_ID, :Report_Date, :Row_Number, :Payment_Type, :Account_Number, :Borrower, :Lender, 
+# :Settle_Date, :Loan_Amt, :Loan_Bal, :Commission, :Original_Broker, :Comm_Rate, :Comm_Payable,
+#  :GST, :Total, :Comment, :Row_Accepted
+
+Import_Vow1:
+  businessName: "Vow Financial"
+  aggregator: "VOW"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Borrower
+    loanAccountNo: :Account_Number
+    totalCommission: :Comm_Payable
+    commissionType: :Payment_Type
+    loanBalance: :Loan_Bal
+    loanAmount: :Loan_Amt
+    settlementDate: :Settle_Date
+    lender: :Lender
+
+ 
+#  :File_Name, :Broker_ID, :Report_Date, :Row_Number, :Commission_Type, :Tracking_ID, :Client_Name, 
+#  :Funder, :Reference, :Month, :Broker, :Lender_Rate, :Loan_Balance, :Payment, :GST, :Total_Pay, 
+#  :Row_Accepted, :Start_Date_Calculated
+
+Import_eChoice1:
+  aggregator: "Choice"
+  header:
+    importDate: :Report_Date
+    brokerOrgUserId: :Broker_ID
+    commissionMonth: :Period
+    broker: :Broker_ID
+  contents: 
+    customerName: :Client_Name
+    loanAccountNo: :Tracking_ID
+    totalCommission: :Payment
+    commissionType: :Commission_Type
+    loanBalance: :Loan_Balance
+    loanAmount: :Loan_Amount
+    settlementDate: :Settle_Date
+    lender: :Funder
+
+
+HardCodedLender:
+  Import_CBAB1: :CBA
+  Import_HLS1: :HEARTLAND
+  Import_Iden1: "NEW IDEN"
+  Import_Iden2: "NEW IDEN"
+  Import_Liberty1: "LIBERTY" 
+  Import_MEZ1: "MORTGAGE EZY"
+  Import_MMBS: "MAITLAND MUTUAL"
+  Import_RZ1: "RedZed"
+  Import_Thinktank1: "THINK TANK"
+    
+
+HardCodedCommissionType: 
+  Import_HLS1: :TC
+  Import_Iden2: :TC
+  Import_Liberty1: :TC
+  Import_MEZ1: :TC
+  Import_MMBS1: :TC
+  Import_RZ1: :TC
+  Import_Thinktank1: :TC
+
+MonthName:
+   jan: "January"
+   feb: "February"
+   mar: "March"
+   apr: "April"
+   may: "May"
+   jun: "June"
+   jul: "July"
+   aug: "August"
+   sep: "September"
+   oct: "October"
+   nov: "November"
+   dec: "December"
+  
