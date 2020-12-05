@@ -3,7 +3,13 @@
 </div>
 
 ## Setup/Installation
+ 
+  ### Install Ruby Version Manager `rvm`
+  
+  ### Install Ruby 
 
+  ### Install Ruby Bundler
+    `gem install bundler` 
 
 ## Configuration 
 
