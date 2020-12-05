@@ -2,8 +2,10 @@
   A data migrations tool
 </div>
 
-## Setup/Installation
+## Step 1: Setup/Installation 
  
+  You can go to the `Configuration` step if rubies are already installed in your system.
+
   ### Install Ruby Version Manager `rvm`
   ```
   sudo apt-get update
@@ -17,8 +19,8 @@
   ### Install Ruby 
 
   ```
-    rvm install ruby-X.X.X
-    rvm --default use ruby-X.X.X
+    rvm install ruby-2.7.2
+    rvm --default use ruby-2.7.2
   ```
 
   ### Install Ruby Bundler
@@ -26,7 +28,7 @@
     gem install bundler --no-rdoc --no-ri
   ```
 
-## Configuration 
+##  Step 2:  Configuration 
   Uncomment folloing line in `classes\app_config.rb`
 
 ```
@@ -38,7 +40,7 @@
    bundle
   ```
 
-## Running task
+##  Step 3: Running task
 
 ### Importing all tables from MySQL to PG
 ```
