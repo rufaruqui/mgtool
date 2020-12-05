@@ -12,17 +12,26 @@ class SearchClient
     end
 
     def self.insert_single_row  data, index_name="impcomsn-"
+      puts "Upserting (Insert/Update) #{data[:Name]} into elastic search".blue
       @@client.index(index: index_name, id: data[:FileKey], body: data[:MessageContent])
       true
     end
 
 
-    def self.insert_bulk data, index_name="impcomsn-"
-       data.each do |d|
-         @@client.index(index: index_name, id: d[:FileKey],  body: d[:MessageContent])
-       end
-       true
-    end
+    # def self.insert_bulk data, index_name="impcomsn-"
+    #    data.each do |d|
+    #      @@client.index(index: index_name, id: d[:FileKey],  body: d[:MessageContent])
+    #    end
+    #    true
+    # end
     
+    def self.insert_bulk body, index_name="impcomsn-"
+      id = (PGDB[:ImportFiles].columns.include? :Id) ? :Id : :id
+      client.bulk index: index_name,
+            type:  '_doc',
+            body:  PGDB[:ImportFiles].all.as_json.map { |a| { index: { _id: a.delete(id), data: a } } },
+            refresh: true
+    end
+
     
 end

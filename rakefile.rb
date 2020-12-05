@@ -25,7 +25,15 @@ end
 desc "Insert data into elastic search"
 
 task :insert_into_es  do 
-    PGDB[:ImportFiles].to_a.each do |row| 
+
+    puts "Setting up contents type as nested".red
+    SearchClient.put_mapping
+
+    id = (PGDB[:ImportFiles].columns.include? :Id) ? :Id : :id
+
+    puts "Upserting (Update/Insert) total #{PGDB[:ImportFiles].count} entrins from Postgress".yellow
+    
+    PGDB[:ImportFiles].order(id).paged_each do |row| 
         SearchClient.insert_single_row row
     end
 end
