@@ -104,7 +104,7 @@
 # #  er, :ClientType, ClientType_ID: :ClientType_ID)
 
 
-# #  RPGDB = Sequel.connect(AppConfig.get["RPG"])
+# #  RPGDB = Sequel.connect(AppConfig.get["PG"])
 # # ds = RPGDB[:AbpUsers].join_table(:inner, :OrganizationUsers, UserId: :Id)
 # # data = ds.pluck(:UserId, :Id, :UserName, :Name, :Surname, :BusinessAbb, :BusinessName, :IsSyncNeeded)
 # # header = [:UserId, :OrgUserId, :UserName, :Name, :Surname, :BusinessAbb, :BusinessName, :IsSyncNeeded]
@@ -136,7 +136,7 @@
 
 ### Find out User Org Id for each broker in new system
 ImportKeyMap.brokermap
-RPGDB = Sequel.connect(AppConfig.get["RPG"])
+RPGDB = Sequel.connect(AppConfig.get["PG"])
 ds = RPGDB[:AbpUsers].join_table(:inner, :OrganizationUsers, UserId: :Id)
 ds.select(:Id, :BusinessAbb).to_a
 user_org_id_hash = Hash.new

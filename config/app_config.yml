@@ -4,22 +4,31 @@
 development:
   PG:
     adapter: 'postgresql' 
-    host: 192.168.0.3
-    database: railsdb_dev
-    port: 5432
-    user: railsdb
-    password: railsdb@1234
-    timeout: 600000
-  
-  RPG:
-    adapter: 'postgresql' 
     host: ec2-18-140-35-29.ap-southeast-1.compute.amazonaws.com
-    database: ImportToolDb
-    ip: 18.140.35.29 
+    database: ImportToolTestDb
     port: 15433
     user: pgadmin
     password: F8FvujfkDVHC3BAR
     timeout: 600000
+
+  # PG:
+  #   adapter: 'postgresql' 
+  #   host: 192.168.0.3
+  #   database: railsdb_dev
+  #   port: 5432
+  #   user: railsdb
+  #   password: railsdb@1234
+  #   timeout: 600000
+  
+  # RPG:
+  #   adapter: 'postgresql' 
+  #   host: ec2-18-140-35-29.ap-southeast-1.compute.amazonaws.com
+  #   database: ImportToolDb
+  #   ip: 18.140.35.29 
+  #   port: 15433
+  #   user: pgadmin
+  #   password: F8FvujfkDVHC3BAR
+  #   timeout: 600000
 
   LMYSQL:
     adapter: 'mysql2'

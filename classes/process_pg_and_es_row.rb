@@ -12,7 +12,7 @@ class ProcessPgAndEsRow
         @Commission_Type_ID[3] = "DI"  #DIS --> DI
         @Commission_Type_ID[4] = "AR"   #AR-->"ARREAR"  
         @Commission_Type_ID[5] = "OTHER"
-        @Commission_Type_ID[6] = "DIS_APP"  #DIS
+        @Commission_Type_ID[6] = "DIS_APP"  #DISRPG
         @Commission_Type_ID[6] = "InsLife"
          
         @comm_type = ImportKeyMap.perform(:HardCodedCommissionType)
@@ -22,9 +22,7 @@ class ProcessPgAndEsRow
         @cols = ImportKeyMap.perform(@table_name)
 
         @brokermap = BrokerMap[@data.first[:Broker_ID].to_i] || ImportKeyMap.dummy_data
-       
-        
-
+      
         file_name = (@data.first[:File_Name]).split("/").last
 
         rh = Hash.new
@@ -47,12 +45,8 @@ class ProcessPgAndEsRow
           contents[:silo]= @brokermap[:funding_source]
           contents[:book] = @brokermap[:book_name]
           contents[:stageOfLife] = @brokermap[:stage_of_life]
-
         rh[:MessageContent] = contents
-         
-        ap rh
-       
-       # DbService.insert_row rh 
+        DbService.insert_row rh 
      end
      
      def self.preapare_nested_contents data

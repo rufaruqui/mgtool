@@ -18,18 +18,22 @@ class DbService
     end
 
     def self.rpg_connect(options={})
-     Sequel.connect(AppConfig.get["RPG"])
+     Sequel.connect(AppConfig.get["PG"])
     end
     
      def self.insert_row row
-             insert_into_rails_pg row
-
-             #insert_row_into_abp_table row
+       if row[:OrganizationUserId].nil? or row[:TemplateId].nil? or row[:OrganizationUserId] == 0 or row[:TemplateId] == 0
+            puts "#{row[:MessageContent][:broker]} -- Ignoring : broker or template doesn't exist".red
+            return 
+        end
+          #insert_into_rails_pg row
+          insert_row_into_abp_table row
       end
 
 
     def self.insert_into_rails_pg row
-       
+        
+            
       PGDB[:ImportFiles] 
          .insert_conflict
          .insert(
@@ -58,7 +62,7 @@ class DbService
          .insert_conflict
          .insert(
             :CreationTime => Time.now,
-            :CreatorUserId => 47,
+            :CreatorUserId => 1,
             :IsDeleted => false, 
                     :Name => row[:Name],
       :OrganizationUserId => row[:OrganizationUserId],
