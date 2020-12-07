@@ -21,32 +21,38 @@ class ProcessPgAndEsRow
 
         @cols = ImportKeyMap.perform(@table_name)
 
-        @brokermap = ImportKeyMap.brokermap[@data.first[:Broker_ID].to_i] || ImportKeyMap.dummy_data
+        @brokermap = BrokerMap[@data.first[:Broker_ID].to_i] || ImportKeyMap.dummy_data
        
+        
+
         file_name = (@data.first[:File_Name]).split("/").last
 
         rh = Hash.new
         rh[:Name]= file_name
-        rh[:OrganizationUserId]=@data.first[:Broker_ID].to_i
-        rh[:TemplateId] = @data.first[:Broker_ID].to_i
-          
+        rh[:OrganizationUserId]=  @brokermap[:user_org_id].to_i
+        rh[:TemplateId] = @brokermap[:template_id].to_i
+        rh[:FileKey] = set_filekey
+        rh[:FileType] = (file_name.split(".").last.downcase.to_sym == :xls or :xlsx) ? 2 : 1 
+
           contents = Hash.new
           contents[:name] = rh[:Name]
           contents[:templateId] = rh[:TemplateId]
+          contents[:fileKey] = rh[:FileKey]
           contents[:contents] = preapare_nested_contents @data
           contents[:broker] = @brokermap[:business_abbrevation]                         #@data.first[:Broker_ID].to_i
-          contents[:importDate] = @data.first[:Report_Date]                             # unless @data.first[:Report_Date].nil?
-          contents[:brokerOrgUserId] = @data.first[:Broker_Id].to_i
-          contents[:aggregator] = @cols[:aggregator]
+          contents[:importDate] = @data.first[:Report_Date]                             #unless @data.first[:Report_Date].nil?
+          contents[:brokerOrgUserId] = @brokermap[:user_org_id].to_i
+          contents[:aggregator] = @brokermap[:aggregator]
           contents[:commissionMonth]= extract_mon_year file_name
           contents[:silo]= @brokermap[:funding_source]
           contents[:book] = @brokermap[:book_name]
           contents[:stageOfLife] = @brokermap[:stage_of_life]
 
         rh[:MessageContent] = contents
-   
+         
+        ap rh
        
-        DbService.insert_row rh 
+       # DbService.insert_row rh 
      end
      
      def self.preapare_nested_contents data
@@ -124,5 +130,9 @@ class ProcessPgAndEsRow
           ch[:lender] = @cols[:contents][:lender] == :HardCoded ? @lender_type[@table_name] : d[@cols[:contents][:lender]]
           return ch
      end
+
+     def self.set_filekey
+      SecureRandom.urlsafe_base64(32)+'='
+   end
 
 end

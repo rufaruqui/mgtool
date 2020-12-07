@@ -29,14 +29,15 @@ class DbService
 
 
     def self.insert_into_rails_pg row
-      fileKey = set_filekey
+       
       PGDB[:ImportFiles] 
          .insert_conflict
          .insert(
             :Name=>row[:Name],
-            :FileKey=>fileKey,
+            :FileKey=>row[:FileKey],
             :OrganizationUserId=>row[:OrganizationUserId],
             :TemplateId=>row[:TemplateId],
+            :FileType => row[:FileType],
             :MessageContent=>row[:MessageContent].to_json, 
             :created_at=>Time.now, 
             :updated_at=>Time.now
@@ -48,13 +49,11 @@ class DbService
      @@PgDB.disconnect
    end
    
-   def self.set_filekey
-      SecureRandom.urlsafe_base64(32)+'='
-   end
+   
 
 
    def self.insert_row_into_abp_table row
-      fileKey = set_filekey
+       
       PGDB[:ImportFiles] 
          .insert_conflict
          .insert(
@@ -64,12 +63,12 @@ class DbService
                     :Name => row[:Name],
       :OrganizationUserId => row[:OrganizationUserId],
               :TemplateId => row[:TemplateId].to_json, 
-                :FileType => 2,
+                :FileType => row[:FileType],
                   :Status => 0,
             :IsSyncNeeded => false,
           :MessageContent => row[:MessageContent].to_json,
                    :Error => [].to_json,
-                 :FileKey => fileKey
+                 :FileKey => row[:FileKey]
          )
    end
 end

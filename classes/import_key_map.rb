@@ -23,28 +23,23 @@ class MyCsvReader
         end
         return h
     end
+
+    def self.write options
+        CSV.open(options[:filename], "wb") do |csv|  
+            csv << options[:header]
+            options[:data].each  do |tab| 
+                csv<<tab[1] 
+            end
+        end   
+    end 
 end
 
 class ImportKeyMap
        @@keymap =  YAML.load_file('config/mappings.yml').with_indifferent_access
-       @@brokermap = MyCsvReader.csv_to_composite_hash "seeds/broker_user_mappings.csv"
-
+     
     def self.perform table_name
           @@keymap[table_name.to_sym] 
     end
-
-    def self.brokermap key=0  # =[]
-
-       if key == 0             #key.empty? in case of composite keys
-          return @@brokermap
-       elsif @@brokermap[key].nil? 
-          return dummy_data
-       else
-          return @@broker_name[key]
-       end
-    end
-
-     
 
     def self.create_csv filename, options
        filename = File.join('config', filename)
