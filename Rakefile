@@ -13,8 +13,6 @@ desc "Import all tables"
 task :import_all_tables do 
    start = Time.now
    import_tables = MSDB.tables.filter.each { |t| t.to_s.include? "Import_"  }
-   #import_tables = [:Import_AFG1, :Import_CBAB1, :Import_CSC1, :Import_Choice1, :Import_Connective2, :Import_Fast1, :Import_Finsure1, :Import_HLS1, :Import_Iden2, :Import_LKT1, :Import_LMKT1, :Import_Liberty1, :Import_MEZ1, :Import_MMBS1, :Import_OFS1, :Import_Plan2, :Import_RZ1, :Import_Thinktank1, :Import_Vision1, :Import_Vow1, :Import_YBR1, :Import_YBR2, :Import_eChoice1, :Import_nMB1]
-
    import_tables.each do |table|
     puts "Importing rows form #{table.to_s}".red
     ImportSingleTable.perform table
