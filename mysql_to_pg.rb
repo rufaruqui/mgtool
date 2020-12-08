@@ -1,4 +1,4 @@
-require './load_lib.rb'
+require './initialize.rb'
  
 
 
@@ -27,8 +27,7 @@ end
 pp "Total #{toatal_rows.to_s} rows to be inserted into PG DB"
 
 
-pp "Processing  all import tables"
-
+# pp "Processing  all import tables"
 # import_tables.each do |table|  
 #     # table = :Import_HLS1
 #      pp "Extracting unique file names from #{table.to_sym}"

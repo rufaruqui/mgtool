@@ -7,13 +7,13 @@ require 'date'
 require 'awesome_print' 
 require 'colorize'
 
-require './classes/app_config.rb'
-require './classes/db_service.rb'
-require './classes/import_key_map.rb'
-require './classes/process_single_import_file.rb' 
-require './classes/process_pg_and_es_row.rb'  
-require  './classes/import_single_table.rb'
-require './classes/search_client.rb'
+require './lib/app_config.rb'
+require './lib/db_service.rb'
+require './lib/import_key_map.rb'
+require './lib/process_single_import_file.rb' 
+require './lib/process_pg_and_es_row.rb'  
+require  './lib/import_single_table.rb'
+require './lib/search_client.rb'
 
 
 MSDB = DbService.connect

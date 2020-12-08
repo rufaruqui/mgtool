@@ -1,5 +1,5 @@
  
-require './load_lib.rb'
+require './initialize.rb'
  
 
 

@@ -1,6 +1,11 @@
 class ImportSingleTable  
 
     def self.perform table 
+        if ImportKeyMap.perform(table.to_sym).nil?
+            puts "No mapping for table: #{table}".red 
+            return 
+        end
+        
         uploaded_files = MSDB[table.to_sym].select(:File_Name).distinct
        
         puts "#{uploaded_files.count} unique files in #{table.to_sym}".red
