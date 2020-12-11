@@ -6,12 +6,15 @@ class SearchClient
         @@client
     end
    
-    def self.put_mapping index_name="impcomsn-"
+    def self.put_mapping index_name=nil
+     index_name = index_name || AppConfig.get["EsIndexName"]
      @@mappings = JSON.parse(File.read("config/es_mappings.json"), symbolize_names: true).freeze
+     @@client.indices.create index: index_name unless @@client.indices.exists? index: index_name
      @@client.indices.put_mapping(index: index_name, body: @@mappings)
     end
 
-    def self.insert_single_row  data, index_name="impcomsn-"
+    def self.insert_single_row  data, index_name=nil
+      index_name = index_name || AppConfig.get["EsIndexName"]
       puts "Upserting (Insert/Update) #{data[:Name]} into elastic search".blue
       @@client.index(index: index_name, id: data[:FileKey], body: data[:MessageContent])
       true
@@ -25,7 +28,9 @@ class SearchClient
     #    true
     # end
     
-    def self.insert_bulk body, index_name="impcomsn-"
+    def self.insert_bulk body, index_name=nil
+      index_name = index_name || AppConfig.get["EsIndexName"]
+
       id = (PGDB[:ImportFiles].columns.include? :Id) ? :Id : :id
       client.bulk index: index_name,
             type:  '_doc',

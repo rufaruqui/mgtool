@@ -5,6 +5,7 @@
 
 Import_AFG1:
   aggregator: "AFG"
+  aggregatorName: "AFG"
   header:
     importDate: :Report_Date
     brokerOrgUserId: :Broker_ID
@@ -28,7 +29,7 @@ Import_AFG1:
 
 
 Import_CBAB1:
-  businessName: "CBA Business"
+  aggregatorName: "CBA Business"
   aggregator: "CBAB"
   header:
     importDate: :Report_Date
@@ -49,7 +50,7 @@ Import_CBAB1:
 #  :Lender, :Facility, :Commission_Paid, :Commission_Type_ID, :Row_Accepted]  
 
 Import_CSC1:
-  businessName: "Client Solution Centre"
+  aggregatorName: "Client Solution Centre"
   aggregator: "CSC"
   header:
     importDate: :Report_Date
@@ -74,6 +75,7 @@ Import_CSC1:
 
 Import_Choice1:
   aggregator: "Choice"
+  aggregatorName: "Choice1"
   header:
     importDate: :Report_Date
     brokerOrgUserId: :Broker_ID
@@ -95,7 +97,7 @@ Import_Choice1:
 #  :Total_Paid, :Lender, :Associate_ID, :Associate_Name, :Loan_Age, :Row_Accepted]
 
 Import_Connective2:
-  businessName: "RCT1 and Account"
+  aggregatorName: "RCT1 and Account"
   aggregator: "Connective"
   header:
     importDate: :Report_Date
@@ -122,6 +124,7 @@ Import_Connective2:
 
 Import_Fast1:
   aggregator: "FAST"
+  aggregatorName: "FAST"
   header:
     importDate: :Report_Date
     brokerOrgUserId: :Broker_ID
@@ -142,7 +145,7 @@ Import_Fast1:
 #  :Paid_to_Broker, :Paid_to_Referrer, :Retained, :Row_Accepted, :Commission_Type_ID] 
 
 Import_Finsure1:
-  businessName: "Finsure Financial Services"
+  aggregatorName: "Finsure Financial Services"
   aggregator: "Finsure"
   header:
     importDate: :Report_Date
@@ -166,7 +169,7 @@ Import_Finsure1:
 
 
 Import_HLS1:
-  businessName: "HeartLand Seniors"
+  aggregatorName: "HeartLand Seniors"
   aggregator: "Heartland"
   header:
     importDate: :Report_Date
@@ -190,7 +193,7 @@ Import_HLS1:
       # :Representative, :SettleDate, :AccNumber, :AccName, :Status, :Date_Process, :Row_Accepted, :Comm_type] 
 
 Import_Iden1:
-  businessName: "New Iden"
+  aggregatorName: "New Iden"
   aggregator: "Iden"
   header:
     importDate: :Report_Date
@@ -212,7 +215,7 @@ Import_Iden1:
 # :Amount, :GST, :Total_Inc_GST, :Row_Accepted] 
 
 Import_Iden2:
-  businessName: "New Iden"
+  aggregatorName: "New Iden"
   aggregator: "IDEN"
   header:
     importDate: :Report_Date
@@ -235,6 +238,7 @@ Import_Iden2:
 
 Import_LKT1:
   aggregator: "LoanKit"
+  aggregatorName: "LoanKit"
   header:
     importDate: :Report_Date
     brokerOrgUserId: :Broker_ID
@@ -259,7 +263,7 @@ Import_LKT1:
 ## Exclude Payment type "Referrer upfront" deductions
 
 Import_LMKT1:
-  businessName: "LMKT1"
+  aggregatorName: "LMKT1"
   aggregator: "LMK"
   header:
     importDate: :Report_Date
@@ -282,7 +286,7 @@ Import_LMKT1:
 # :AmountPaid, :PeriodEndDate, :Row_Accepted, :Comm_type] 
 
 Import_Liberty1:
-  businessName: "Liberty Financial"
+  aggregatorName: "Liberty Financial"
   aggregator: "Liberty"
   header:
     importDate: :Report_Date
@@ -305,7 +309,7 @@ Import_Liberty1:
 #  :BP_Name, :Row_Accepted] 
 
 Import_MEZ1:
-  businessName: "Mortgage Ezy"
+  aggregatorName: "Mortgage Ezy"
   aggregator: "MEZ"
   header:
     importDate: :Report_Date
@@ -329,7 +333,7 @@ Import_MEZ1:
 
 
 Import_MMBS1:
-  businessName: "Maitland Mutual Buildings Society"
+  aggregatorName: "Maitland Mutual Buildings Society"
   aggregator: "MMBS"
   header:
     importDate: :Report_Date
@@ -351,7 +355,7 @@ Import_MMBS1:
 #  :Comm_Rate, :Comm_Payable, :GST, :Total, :Comment, :Row_Accepted] 
 
 Import_OFS1:
-  businessName: "Outsource Financials Services"
+  aggregatorName: "Outsource Financials Services"
   aggregator: "OFS"
   header:
     importDate: :Report_Date
@@ -375,6 +379,7 @@ Import_OFS1:
 
 Import_Plan1:
   aggregator: "PLAN"
+  aggregatorName: "PLAN"
   header:
     importDate: :Report_Date
     brokerOrgUserId: :Broker_ID
@@ -399,6 +404,7 @@ Import_Plan1:
 
 Import_Plan2:
   aggregator: "PLAN"
+  aggregatorName: "PLAN"
   header:
     importDate: :Report_Date
     brokerOrgUserId: :Broker_ID
@@ -423,6 +429,7 @@ Import_Plan2:
 
 Import_RZ1:
   aggregator: "RedZed"
+  aggregatorName: "RedZed"
   header:
     importDate: :Report_Date
     brokerOrgUserId: :Broker_ID
@@ -445,7 +452,7 @@ Import_RZ1:
 # :GST, :Total, :Payment_Date, :Row_Accepted, :Comm_type 
 
 Import_Thinktank1:
-  businessName: "Think Tank Commercial"
+  aggregatorName: "Think Tank Commercial"
   aggregator: "ThinkTank"
   header:
     importDate: :Report_Date
@@ -468,7 +475,7 @@ Import_Thinktank1:
 # :Row_Accepted, :Start_Date_Calculated
 
 Import_Vision1:
-  businessName: "Vision Finances and Property Services"
+  aggregatorName: "Vision Finances and Property Services"
   aggregator: "Vision"
   header:
     importDate: :Report_Date
@@ -490,7 +497,7 @@ Import_Vision1:
 #  :GST, :Total, :Comment, :Row_Accepted
 
 Import_Vow1:
-  businessName: "Vow Financial"
+  aggregatorName: "Vow Financial"
   aggregator: "VOW"
   header:
     importDate: :Report_Date
@@ -514,6 +521,7 @@ Import_Vow1:
 
 Import_eChoice1:
   aggregator: "Choice"
+  aggregatorName: "eChoice"
   header:
     importDate: :Report_Date
     brokerOrgUserId: :Broker_ID

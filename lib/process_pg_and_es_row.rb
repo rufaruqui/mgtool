@@ -41,7 +41,8 @@ class ProcessPgAndEsRow
           contents[:importDate] = @data.first[:Report_Date]                             #unless @data.first[:Report_Date].nil?
           contents[:brokerOrgUserId] = @brokermap[:user_org_id].to_i
           contents[:aggregator] = @brokermap[:aggregator]
-          contents[:commissionMonth]= extract_mon_year file_name
+          contents[:aggregatorName] = @brokermap[:aggregator_name]
+          contents[:commissionDate]= extract_mon_year file_name
           contents[:silo]= @brokermap[:funding_source]
           contents[:book] = @brokermap[:book_name]
           contents[:stageOfLife] = @brokermap[:stage_of_life]
@@ -85,7 +86,7 @@ class ProcessPgAndEsRow
 
      def self.extract_mon_year file_name 
            m = file_name.match /(?<mon>\w{3})(?<year>\d+)/
-           @month_name[m[:mon].downcase.to_sym].to_s + " " + m[:year].to_s unless m.nil?
+           DateTime.parse("01-"+@month_name[m[:mon].downcase.to_sym].to_s + "-" + m[:year].to_s) unless m.nil?
      end
 
      def self.prepare_data_for_contents d 
