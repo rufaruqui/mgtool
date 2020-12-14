@@ -16,6 +16,7 @@ class SearchClient
     def self.insert_single_row  data, index_name=nil
       index_name = index_name || AppConfig.get["EsIndexName"]
       puts "Upserting (Insert/Update) #{data[:Name]} into elastic search".blue
+      MyLogger.info "Upserting (Insert/Update) #{data[:Name]} into elastic search"
       @@client.index(index: index_name, id: data[:FileKey], body: data[:MessageContent])
       true
     end

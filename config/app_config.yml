@@ -45,10 +45,7 @@ development:
     retry_on_faliure: 5
     request_time_out: 30
     #adapter: :typhoes
-  RES:
-    url: "https://seekdev0.lbh.one/"
-    user: elastic
-    password: 6nHYWJhv6CbAN3qK
+ 
 
 ##
 ##Config for Production Environment###
@@ -73,7 +70,10 @@ production:
     user: pgadmin
     password: F8FvujfkDVHC3BAR
     timeout: 600000
+    
   ES:
-    url: "https://seekdev0.lbh.one/"
-    user: elastic
-    password: 6nHYWJhv6CbAN3qK
+     host: 'seekdev0.lbh.one'
+     port: '443'
+     user: 'elastic'
+     password: '6nHYWJhv6CbAN3qK'
+     scheme: 'https'

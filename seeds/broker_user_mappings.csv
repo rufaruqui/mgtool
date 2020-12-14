@@ -1,4 +1,4 @@
-﻿dump,Broker_ID,Provider_Name,Funding_Source,Client_Name,Broker_Name,Email (Go Live),Business Name,Business Contact First Name,Business Contact Last Name,Business Abbrevation,Aggregators,Aggregator,Stage of Life,Book Name,Stage of Life
+﻿sl,Broker_ID,Provider_Name,Funding_Source,Client_Name,Broker_Name,Email (Go Live),Business Name,Business Contact First Name,Business Contact Last Name,Business Abbrevation,Aggregators,Aggregator,Stage of Life,Book Name,Stage of Life
 0,46,Trail Markets - AB Credit,SPV 4,2020 Home Loans,2020 Home Loans,radialdata+2020@radialsolutions.com.au,2020 Home Loans,Tony,Rimon,2020,AFG,AFG,Maintenance,2020 Home Loans,AFG - Maintenance
 1,45,Trail Markets - AB Credit,SPV 1,A2B,A2B,radialdata+a2b@radialsolutions.com.au,A2B,Gordon,McMillan,A2B,Connective ; AFG,AFG,Runoff,A2BA,AFG - Runoff
 2,45,Trail Markets - AB Credit,SPV 1,A2B,A2B,radialdata+a2b@radialsolutions.com.au,A2B,Gordon,McMillan,A2B,Connective ; AFG,Connective,Accumulation,A2BC,Connective - Accumulation

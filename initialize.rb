@@ -6,6 +6,7 @@ require 'inifile'
 require 'date'
 require 'awesome_print' 
 require 'colorize'
+require 'logger'
 
 require_relative 'lib/app_config.rb'
 require_relative 'lib/db_service.rb'
@@ -21,3 +22,10 @@ MSDB = DbService.connect
 PGDB = DbService.pg_connect 
 RADIAL_PG = DbService.rpg_connect 
 BrokerMap = GetBrokerMap.get_broker_map
+
+
+MyLogger = Logger.new(File.open('mgtool.log', File::WRONLY | File::APPEND | File::CREAT))
+
+bh = Hash.new
+MSDB[:Broker].to_a.each { |b| bh[b[:Broker_ID]] = b[:Broker_Name] }
+BrokerHash = bh

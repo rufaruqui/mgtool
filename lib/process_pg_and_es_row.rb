@@ -47,7 +47,7 @@ class ProcessPgAndEsRow
           contents[:book] = @brokermap[:book_name]
           contents[:stageOfLife] = @brokermap[:stage_of_life]
         rh[:MessageContent] = contents
-        DbService.insert_row rh 
+        DbService.insert_row rh, @data.first[:Broker_ID].to_i
      end
      
      def self.preapare_nested_contents data
@@ -85,8 +85,16 @@ class ProcessPgAndEsRow
      end
 
      def self.extract_mon_year file_name 
-           m = file_name.match /(?<mon>\w{3})(?<year>\d+)/
-           DateTime.parse("01-"+@month_name[m[:mon].downcase.to_sym].to_s + "-" + m[:year].to_s) unless m.nil?
+         #  m = file_name.match /(?<mon>\w{3})(?<year>\d+)/
+         #  DateTime.parse("01-"+@month_name[m[:mon].downcase.to_sym].to_s + "-" + m[:year].to_s) unless m.nil?
+          m = file_name.match /(?<mon>\w{3,12})(.?)(?<year>\d{2,4})/
+         begin 
+          DateTime.parse("01-"+m[:mon] + "-" + m[:year].to_s) unless m.nil?
+         rescue
+           puts "Invalid date in #{file_name}. Inserting current time for Commission Month".red
+           MyLogger.error "Invalid date in #{file_name}. Inserting current time for Commission Month"
+           Time.now
+         end
      end
 
      def self.prepare_data_for_contents d 

@@ -29,7 +29,7 @@
   ```
 
 ##  Step 2:  Configuration 
-  Uncomment folloing line in `classes\app_config.rb`
+  Uncomment folloing line in `lib\app_config.rb`
 
 ```
   APP_ENV = "production"

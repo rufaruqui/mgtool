@@ -21,9 +21,12 @@ class DbService
      Sequel.connect(AppConfig.get["PG"])
     end
     
-     def self.insert_row row
+     def self.insert_row row, broker_id
        if row[:OrganizationUserId].nil? or row[:TemplateId].nil? or row[:OrganizationUserId] == 0 or row[:TemplateId] == 0
-            puts "#{row[:MessageContent][:broker]} -- Ignoring : broker or template doesn't exist".red
+            puts "#{row[:MessageContent][:broker]} -- Ignoring : broker or template doesn't exist".yellow
+            MyLogger.warn "#{row[:MessageContent][:broker]} -- Ignoring : broker or template doesn't exist"
+            puts  "BrokerId:#{broker_id}, BrokerName: #{BrokerHash[broker_id]} -- missing in the new system".red if broker_id
+            MyLogger.warn "BrokerId:#{broker_id}, BrokerName: #{BrokerHash[broker_id]} -- missing in the new system" if broker_id
             return 
         end
           #insert_into_rails_pg row
