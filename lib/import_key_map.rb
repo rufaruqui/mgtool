@@ -1,6 +1,6 @@
 require 'csv'
 require 'active_support/core_ext/hash/indifferent_access'
-
+ 
 class MyCsvReader
 
     def self.read filename

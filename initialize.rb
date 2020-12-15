@@ -7,6 +7,7 @@ require 'date'
 require 'awesome_print' 
 require 'colorize'
 require 'logger'
+require 'base64'
 
 require_relative 'lib/app_config.rb'
 require_relative 'lib/db_service.rb'

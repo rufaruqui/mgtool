@@ -106,7 +106,7 @@ Import_Connective2:
     broker: :Broker_ID
   contents: 
     customerName: :Loan_Name
-    loanAccountNo: :Acc_number
+    loanAccountNo: :Acc_Number
     totalCommission: :Total_Commission
     commissionType: :Comm_Type
     loanBalance: :Loan_Balance
@@ -155,7 +155,7 @@ Import_Finsure1:
   contents: 
     customerName: :Client
     loanAccountNo: :Ref_No
-    totalCommission: :Net_Amount
+    totalCommission: :Paid_to_Broker
     commissionType: :Commission_Type_ID  #Lookup Commission Type, make a hash, hard coded "TC" "UC"
     loanBalance: :Loan_Balance
     loanAmount: :Loan_Amount

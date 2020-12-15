@@ -1,4 +1,3 @@
-require 'securerandom'
 
 class DbService
       @@MysqlDB = Sequel.connect(AppConfig.get["MYSQL"])

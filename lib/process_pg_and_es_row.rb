@@ -29,7 +29,7 @@ class ProcessPgAndEsRow
         rh[:Name]= file_name
         rh[:OrganizationUserId]=  @brokermap[:user_org_id].to_i
         rh[:TemplateId] = @brokermap[:template_id].to_i
-        rh[:FileKey] = set_filekey
+        rh[:FileKey] = set_filekey(file_name)
         rh[:FileType] = (file_name.split(".").last.downcase.to_sym == :xls or :xlsx) ? 2 : 1 
 
           contents = Hash.new
@@ -42,6 +42,7 @@ class ProcessPgAndEsRow
           contents[:brokerOrgUserId] = @brokermap[:user_org_id].to_i
           contents[:aggregator] = @brokermap[:aggregator]
           contents[:aggregatorName] = @brokermap[:aggregator_name]
+          contents[:businessName] = @brokermap[:business_name]
           contents[:commissionDate]= extract_mon_year file_name
           contents[:silo]= @brokermap[:funding_source]
           contents[:book] = @brokermap[:book_name]
@@ -93,7 +94,7 @@ class ProcessPgAndEsRow
          rescue
            puts "Invalid date in #{file_name}. Inserting current time for Commission Month".red
            MyLogger.error "Invalid date in #{file_name}. Inserting current time for Commission Month"
-           Time.now
+           Time.now.to_i
          end
      end
 
@@ -134,8 +135,9 @@ class ProcessPgAndEsRow
           return ch
      end
 
-     def self.set_filekey
-      SecureRandom.urlsafe_base64(32)+'='
+     def self.set_filekey file_name
+      #SecureRandom.urlsafe_base64(32)+'='
+      Base64.urlsafe_encode64(file_name)+"="
    end
 
 end
