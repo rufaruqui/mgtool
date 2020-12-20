@@ -39,5 +39,21 @@ class SearchClient
             refresh: true
     end
 
+
+    def self.insert_all
+      puts "Setting up contents type as nested".red
+      MyLogger.info "Setting up contents type as nested"
+      SearchClient.put_mapping
+
+      id = (PGDB[:ImportFiles].columns.include? :Id) ? :Id : :id
+
+      puts "Upserting (Update/Insert) total #{PGDB[:ImportFiles].count} entrins from Postgress".yellow
+
+      MyLogger.info "Upserting (Update/Insert) total #{PGDB[:ImportFiles].count} entrins from Postgress"
+
+      PGDB[:ImportFiles].order(id).paged_each(:rows_per_fetch=>50) do |row| 
+          insert_single_row row
+      end
+    end
     
 end

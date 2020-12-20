@@ -26,4 +26,20 @@ class ImportSingleTable
         puts "Already processed file : #{name}".yellow if check
         check
     end
+
+    def self.import_all
+      start = Time.now
+      import_tables = MSDB.tables.filter.each { |t| t.to_s.include? "Import_"  }
+      import_tables.each do |table|
+            puts "Importing rows form #{table.to_s}".red
+            MyLogger.info "Importing rows form #{table.to_s}"
+            ImportSingleTable.perform table
+        end
+        
+        finish = Time.now
+
+        diff = ((finish - start)/60).round(2)
+        puts "Total time to migrate all data: #{diff} minutes".red
+        MyLogger.info "Total time to migrate all data: #{diff} minutes"
+    end
 end

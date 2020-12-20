@@ -43,7 +43,7 @@ class ProcessPgAndEsRow
           contents[:aggregator] = @brokermap[:aggregator]
           contents[:aggregatorName] = @brokermap[:aggregator_name]
           contents[:businessName] = @brokermap[:business_name]
-          contents[:commissionDate]= extract_mon_year file_name
+          contents[:commissionMonth], contents[:commissionDate]= extract_mon_year file_name
           contents[:silo]= @brokermap[:funding_source]
           contents[:book] = @brokermap[:book_name]
           contents[:stageOfLife] = @brokermap[:stage_of_life]
@@ -86,16 +86,17 @@ class ProcessPgAndEsRow
      end
 
      def self.extract_mon_year file_name 
-         #  m = file_name.match /(?<mon>\w{3})(?<year>\d+)/
-         #  DateTime.parse("01-"+@month_name[m[:mon].downcase.to_sym].to_s + "-" + m[:year].to_s) unless m.nil?
-          m = file_name.match /(?<mon>\w{3,12})(.?)(?<year>\d{2,4})/
+           return_date =  [Time.now.strftime("%B %Y"), Time.now.to_i] 
+           m = file_name.match /(?<mon>\w{3,12})(.?)(?<year>\d{2,4})/
          begin 
-          DateTime.parse("01-"+m[:mon] + "-" + m[:year].to_s) unless m.nil?
+           d =   DateTime.parse "01-"+m[:mon] + "-" + m[:year].to_s
+           return_date = [d.strftime("%B %Y"), d]
          rescue
            puts "Invalid date in #{file_name}. Inserting current time for Commission Month".red
-           MyLogger.error "Invalid date in #{file_name}. Inserting current time for Commission Month"
-           Time.now.to_i
-         end
+           MyLogger.error "Invalid date in #{file_name}. Inserting current time for Commission Month" 
+           return_date
+         end unless m.nil?
+         return_date        
      end
 
      def self.prepare_data_for_contents d 
@@ -137,7 +138,8 @@ class ProcessPgAndEsRow
 
      def self.set_filekey file_name
       #SecureRandom.urlsafe_base64(32)+'='
-      Base64.urlsafe_encode64(file_name)+"="
+      Base64.urlsafe_encode64(file_name)
    end
+   
 
 end

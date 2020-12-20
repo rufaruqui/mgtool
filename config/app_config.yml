@@ -1,5 +1,5 @@
 ##
-##Config for Development Environment###
+### Config for Development Environment ###
 ##
 development:
   EsIndexName: "impcomsn-"
@@ -11,7 +11,6 @@ development:
     user: pgadmin
     password: F8FvujfkDVHC3BAR
     timeout: 600000
-
   # PG:
   #   adapter: 'postgresql' 
   #   host: localhost
@@ -20,17 +19,6 @@ development:
   #   user: railsdb
   #   password: railsdb@1234
   #   timeout: 600000
-  
-  # PG:
-  #   adapter: 'postgresql' 
-  #   host: ec2-18-140-35-29.ap-southeast-1.compute.amazonaws.com
-  #   database: ImportToolDb
-  #   ip: 18.140.35.29 
-  #   port: 15433
-  #   user: pgadmin
-  #   password: F8FvujfkDVHC3BAR
-  #   timeout: 600000
-  
   MYSQL:
     adapter: 'mysql2'
     host: radial-migation.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
@@ -39,21 +27,15 @@ development:
     password: n2pDjKFYzMFAzPbX
     timeout: 600000
     port: 3306
-
   ES:
-    host: 'seekdev0.lbh.one'
-    port: '443'
-    user: 'elastic'
-    password: '6nHYWJhv6CbAN3qK'
-    scheme: 'https'
-    # url: "http://192.168.0.3:9200" #"http://localhost:9200"
-    # retry_on_faliure: 5
-    # request_time_out: 30
-    # #adapter: :typhoes
+    url: "http://localhost:9200"
+    retry_on_faliure: 5
+    request_time_out: 30
+    #adapter: :typhoes
  
 
 ##
-##Config for Production Environment###
+### Config for Production Environment ###
 ##
 
 production:
@@ -75,10 +57,47 @@ production:
     user: pgadmin
     password: F8FvujfkDVHC3BAR
     timeout: 600000
-
   ES:
      host: 'seekdev0.lbh.one'
      port: '443'
      user: 'elastic'
      password: '6nHYWJhv6CbAN3qK'
      scheme: 'https'
+     #log: true
+     retry_on_failure: 5,
+     request_timeout: 30,
+
+
+##
+### Config for Production Environment ###
+##
+
+staging:
+  EsIndexName: "impcomsn-"
+  MYSQL:
+    adapter: 'mysql2'
+    host: radial-migation.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
+    database: Apollo
+    user: radialadmin
+    password: n2pDjKFYzMFAzPbX
+    timeout: 600000
+    port: 3306
+  PG:
+     adapter: postgresql
+     encoding: unicode
+     database: ImportToolStageDb
+     pool: 5
+     #url: "DATABASE_URL:postgresql://postgres:4XfVtpxEeszwPjKR@10.0.0.143:11002/ImportToolStageDb"
+     DATABASE_URL: "postgresql://postgres:4XfVtpxEeszwPjKR@10.0.0.143:11002/ImportToolStageDb"
+     host: 54.66.136.121
+     port: 11002
+     timeout: 600000
+
+  ES:
+     url: 'https://52.65.89.242:11003'
+     user: 'elastic'
+     password: '5jfgPSB4sNeCxnRd'
+     #scheme: 'https'
+     #log: true
+     retry_on_failure: 5
+     request_timeout: 30
