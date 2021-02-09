@@ -29,5 +29,18 @@
         brokermap[16][:template_id]=PGDB[:Templates].order(:Id).last[:Id] if brokermap[16][:template_id].nil?
         return brokermap
     end
+
+    def self.get_manufacturer_reference
+        mn  =  MSDB[:Manufacturer].select(:Manufacturer_ID, :Manufacturer_Name)
+        mnr = MSDB[:ManufacturerReference].select(:Manufacturer_ID, :Manufacturer_Name, :ManufacturerReference_ID)
+
+        mn_hash = Hash.new
+        mn.to_a.each { |item| mn_hash[item[:Manufacturer_ID]] = item[:Manufacturer_Name] }
+
+        mnr_hash = Hash.new
+        mnr.to_a.each { |item|   mnr_hash[item[:Manufacturer_Name].strip.downcase.to_sym] = mn_hash[item[:Manufacturer_ID]]}
+      return mnr_hash
+    end
+
 end
 

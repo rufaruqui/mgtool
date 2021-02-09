@@ -97,7 +97,7 @@ Import_Choice1:
 #  :Total_Paid, :Lender, :Associate_ID, :Associate_Name, :Loan_Age, :Row_Accepted]
 
 Import_Connective2:
-  aggregatorName: "RCT1 and Account"
+  aggregatorName: "Connective"
   aggregator: "Connective"
   header:
     importDate: :Report_Date

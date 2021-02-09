@@ -30,3 +30,4 @@ MyLogger = Logger.new(File.open('mgtool.log', File::WRONLY | File::APPEND | File
 bh = Hash.new
 MSDB[:Broker].to_a.each { |b| bh[b[:Broker_ID]] = b[:Broker_Name] }
 BrokerHash = bh
+ManufacturerHash = GetBrokerMap.get_manufacturer_reference

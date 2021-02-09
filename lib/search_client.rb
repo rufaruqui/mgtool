@@ -9,6 +9,7 @@ class SearchClient
     def self.put_mapping index_name=nil
      index_name = index_name || AppConfig.get["EsIndexName"]
      @@mappings = JSON.parse(File.read("config/es_mappings.json"), symbolize_names: true).freeze
+     #@@client.indices.delete index: index_name
      @@client.indices.create index: index_name unless @@client.indices.exists? index: index_name
      @@client.indices.put_mapping(index: index_name, body: @@mappings)
     end
@@ -57,3 +58,5 @@ class SearchClient
     end
     
 end
+
+ 

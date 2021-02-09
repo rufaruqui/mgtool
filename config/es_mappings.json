@@ -2,7 +2,7 @@
   "dynamic": "true",
   "properties": {
     "contents": {
-        "type": "nested" 
+        "type": "nested"
       }
   }
 }

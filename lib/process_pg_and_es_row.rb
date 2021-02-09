@@ -23,7 +23,7 @@ class ProcessPgAndEsRow
 
         @brokermap = BrokerMap[@data.first[:Broker_ID].to_i] || ImportKeyMap.dummy_data
       
-        file_name = (@data.first[:File_Name]).split("/").last
+        file_name = (@data.first[:File_Name]).split("/").last.gsub("_","-")
 
         rh = Hash.new
         rh[:Name]= file_name
@@ -76,6 +76,8 @@ class ProcessPgAndEsRow
               return "TC"
          elsif (!v.nil? and v.downcase.include? ("up" or "uc" or "ufc"))
                return "UC"
+          elsif (!v.nil? and v.downcase.include? ("arr" or "arrears"))
+               return "AR"
           elsif (!v.nil? and v.downcase.to_sym == :dis)
                return "DI"
           elsif (!v.nil? and v.downcase.to_sym == :clowback)
@@ -106,12 +108,16 @@ class ProcessPgAndEsRow
           ch[:totalCommission] = d[@cols[:contents][:totalCommission]].to_f
           ch[:commissionType] =  check_commission_type @cols[:contents][:commissionType], d[@cols[:contents][:commissionType]] #(ch[:commissionType] == :Commission_Type_ID) ? @Commission_Type_ID[d[cols[:contents][:commissionType]].to_i] : (!d[cols[:contents][:commissionType]].nil? and d[cols[:contents][:commissionType]].downcase.include? "trail" or "tc") ? "TC" : "UC"  ##ToDO: -- Bring CommissionTypeWithID]   
           ch[:loanBalance] = d[@cols[:contents][:loanBalance]].nil? ? 0: d[@cols[:contents][:loanBalance]].to_f
-          ch[:loanAmount] =  d[@cols[:contents][:loanAmount]].nil? ? 0 : d[@cols[:contents][:loanAmount]].to_f
+          ch[:loanAmount] =  d[@cols[:contents][:loanAmount]].nil? ? 0 : d[@cols[:contents][:loanAmount]].to_i
           ch[:settlementDate] = d[@cols[:contents][:settlementDate]]
-          ch[:lender] = @cols[:contents][:lender] == :HardCoded ? @lender_type[@table_name] : d[@cols[:contents][:lender]]
+          ch[:lender] = @cols[:contents][:lender] == :HardCoded ? @lender_type[@table_name] : lender_from_manufacturer_ref(d[@cols[:contents][:lender]])
           return ch
      end
 
+     def self.lender_from_manufacturer_ref lender
+          len = ManufacturerHash[lender.strip.downcase.to_sym]
+          return (len.nil?)? lender : len
+     end
 
      def self.prepare_data_for_contents_import_red_zed d 
           ch = Hash.new
@@ -130,9 +136,9 @@ class ProcessPgAndEsRow
           end
 
           ch[:loanBalance] = d[@cols[:contents][:loanBalance]].nil? ? 0: d[@cols[:contents][:loanBalance]].to_f
-          ch[:loanAmount] =  d[@cols[:contents][:loanAmount]].nil? ? 0 : d[@cols[:contents][:loanAmount]].to_f
+          ch[:loanAmount] =  d[@cols[:contents][:loanAmount]].nil? ? 0 : d[@cols[:contents][:loanAmount]].to_i
           ch[:settlementDate] = d[@cols[:contents][:settlementDate]]
-          ch[:lender] = @cols[:contents][:lender] == :HardCoded ? @lender_type[@table_name] : d[@cols[:contents][:lender]]
+          ch[:lender] = @cols[:contents][:lender] == :HardCoded ? @lender_type[@table_name] : lender_from_manufacturer_ref(d[@cols[:contents][:lender]])
           return ch
      end
 
