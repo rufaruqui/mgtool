@@ -2227,3 +2227,37 @@ I, [2021-02-10T15:06:38.381612 #21803]  INFO -- : FTF_Connective_T1_202012071100
 E, [2021-02-10T15:06:38.381886 #21803] ERROR -- : Invalid date in LoanNav_Connective_T1_20201207111151000.xls. Inserting current time for Commission Month: December 2020
 I, [2021-02-10T15:06:38.381908 #21803]  INFO -- : LoanNav_Connective_T1_20201207111151000.xls---->December 2020
 E, [2021-02-10T15:06:38.382067 #21803] ERROR -- : Invalid date in Fox_Connective_T1_20201108122905000.xls. Inserting current time for Commission Month: November 2020
+I, [2021-02-10T15:06:38.382174 #21803]  INFO -- : Fox_Connective_T1_20201108122905000.xls---->November 2020
+E, [2021-02-10T15:06:38.382473 #21803] ERROR -- : Invalid date in FFS_Connective_T1_20201208125242000.xls. Inserting current time for Commission Month: December 2020
+I, [2021-02-10T15:06:38.382501 #21803]  INFO -- : FFS_Connective_T1_20201208125242000.xls---->December 2020
+I, [2021-02-10T15:06:38.382633 #21803]  INFO -- : ARK_IDEN_T1_20201208022755000.xls---->February 2021
+E, [2021-02-10T15:06:38.516766 #21803] ERROR -- : Invalid date in FirstStart_Finsure_T1_20201208023257000.xls. Inserting current time for Commission Month: December 2020
+I, [2021-02-10T15:06:38.516827 #21803]  INFO -- : FirstStart_Finsure_T1_20201208023257000.xls---->December 2020
+I, [2021-02-10T15:06:38.517017 #21803]  INFO -- : ARK_FAST_T1_20201208023504000.xls---->February 2021
+E, [2021-02-10T15:06:38.517334 #21803] ERROR -- : Invalid date in FFS_Connective_T1_20201208023752000.xls. Inserting current time for Commission Month: December 2020
+I, [2021-02-10T15:06:38.517375 #21803]  INFO -- : FFS_Connective_T1_20201208023752000.xls---->December 2020
+I, [2021-02-10T15:06:38.517557 #21803]  INFO -- : FFS_FAST_T2_20201208023910000.xls---->February 2021
+I, [2021-02-10T15:06:38.517804 #21803]  INFO -- : FFS_PLAN_T1_20201208023936000.csv---->February 2021
+I, [2021-02-10T15:06:38.517960 #21803]  INFO -- : FFS_PLAN_T1_20201208024300000.csv---->February 2021
+E, [2021-02-10T15:06:38.518244 #21803] ERROR -- : Invalid date in EFS_Connective_T1_20201208024332000.xls. Inserting current time for Commission Month: December 2020
+I, [2021-02-10T15:06:38.518279 #21803]  INFO -- : EFS_Connective_T1_20201208024332000.xls---->December 2020
+E, [2021-02-10T15:06:38.518526 #21803] ERROR -- : Invalid date in LLL_Connective_T1_20201208024522000.xls. Inserting current time for Commission Month: December 2020
+I, [2021-02-10T15:06:38.518549 #21803]  INFO -- : LLL_Connective_T1_20201208024522000.xls---->December 2020
+I, [2021-02-10T15:06:38.518624 #21803]  INFO -- : LLL_FAST_T2_20201208024533000.xls---->February 2021
+I, [2021-02-10T15:06:38.518708 #21803]  INFO -- : EFS_FAST_T2_20201208024407000.xls---->February 2021
+E, [2021-02-10T15:06:38.518862 #21803] ERROR -- : Invalid date in FirstStart_Finsure_T1_20201208041910000.xls. Inserting current time for Commission Month: December 2020
+I, [2021-02-10T15:06:38.518879 #21803]  INFO -- : FirstStart_Finsure_T1_20201208041910000.xls---->December 2020
+E, [2021-02-10T15:06:38.518996 #21803] ERROR -- : Invalid date in EFS_Finsure_T1_20201208041945000.xls. Inserting current time for Commission Month: December 2020
+I, [2021-02-10T15:06:38.519021 #21803]  INFO -- : EFS_Finsure_T1_20201208041945000.xls---->December 2020
+E, [2021-02-10T15:06:38.519139 #21803] ERROR -- : Invalid date in FirstStart_Finsure_T1_20201208110218000.xls. Inserting current time for Commission Month: December 2020
+I, [2021-02-10T15:06:38.519155 #21803]  INFO -- : FirstStart_Finsure_T1_20201208110218000.xls---->December 2020
+E, [2021-02-10T15:06:38.519303 #21803] ERROR -- : Invalid date in FirstStart_Finsure_T1_20201108115023000.xls. Inserting current time for Commission Month: November 2020
+I, [2021-02-10T15:06:38.519319 #21803]  INFO -- : FirstStart_Finsure_T1_20201108115023000.xls---->November 2020
+E, [2021-02-10T15:06:38.519432 #21803] ERROR -- : Invalid date in Zippy_Choice_T1_20201209064207000.xls. Inserting current time for Commission Month: December 2020
+I, [2021-02-10T15:06:38.519447 #21803]  INFO -- : Zippy_Choice_T1_20201209064207000.xls---->December 2020
+E, [2021-02-10T15:06:38.524449 #21803] ERROR -- : Invalid date in Zippy_Choice_T1_20201209064248000.xls. Inserting current time for Commission Month: December 2020
+I, [2021-02-10T15:06:38.524524 #21803]  INFO -- : Zippy_Choice_T1_20201209064248000.xls---->December 2020
+E, [2021-02-10T15:06:38.524857 #21803] ERROR -- : Invalid date in Zippy_Choice_T1_20201209065655000.xls. Inserting current time for Commission Month: December 2020
+I, [2021-02-10T15:06:38.524900 #21803]  INFO -- : Zippy_Choice_T1_20201209065655000.xls---->December 2020
+E, [2021-02-10T15:06:38.525178 #21803] ERROR -- : Invalid date in SandcastleFinance_Finsure_T1_20201110015014000.xls. Inserting current time for Commission Month: November 2020
+I, [2021-02-10T15:06:38.525215 #21803]  INFO -- : SandcastleFinance_Finsure_T1_20201110015014000.xls---->November 2020

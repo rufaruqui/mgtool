@@ -123,7 +123,8 @@ class ProcessPgAndEsRow
 
      def self.lender_from_manufacturer_ref lender
           len = ManufacturerHash[lender.strip.downcase.to_sym]
-          return (len.nil?)? lender : len
+          len = len.match /(?<lenabb>\(?\w{2,50}?\))/ unless len.nil?
+          return (len.nil?)? lender : len[:lenabb][1..-2]
      end
 
      def self.prepare_data_for_contents_import_red_zed d 
