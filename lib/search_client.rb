@@ -58,5 +58,6 @@ class SearchClient
     end
     
 end
+#PGDB[:ImportFiles].order(id).paged_each(:rows_per_fetch=>50) { |row| a,b = ProcessPgAndEsRow.
 
- 
+# ds.select(:Name).to_a.each { |row| extract_mon_year row[:Name]; MyLogger.info "#{row[:Name]}---->#{a}"; }

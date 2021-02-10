@@ -89,14 +89,21 @@ class ProcessPgAndEsRow
 
      def self.extract_mon_year file_name 
            return_date =  [Time.now.strftime("%B %Y"), Time.now.to_i] 
-           m = file_name.match /(?<mon>\w{3,12})(.?)(?<year>\d{2,4})/
+           m = file_name.split("-").last.match /(?<mon>\w{3,12})(.?)(?<year>\d{2,4})/
+           
+           m = file_name.match /(?<mon>\w{3,12})(.?)(?<year>\d{2,4})/ if m.nil?
+           
          begin 
-           d =   DateTime.parse "01-"+m[:mon] + "-" + m[:year].to_s
+           #d =   DateTime.parse "01-"+m[:mon] + "-" + m[:year].to_s
+           d =   DateTime.parse [(m[:year].length == 2 )? "20"+m[:year] : m[:year], m[:mon].to_s,"01"].join("-")
            return_date = [d.strftime("%B %Y"), d]
          rescue
-           puts "Invalid date in #{file_name}. Inserting current time for Commission Month".red
-           MyLogger.error "Invalid date in #{file_name}. Inserting current time for Commission Month" 
-           return_date
+            m = file_name.split("-").last.match /(?<year>\d{2,4})(?<mon>\d{2})(?<day>\d{2})/
+            d =   DateTime.parse [(m[:year].length == 2 )? "20"+m[:year] : m[:year], m[:mon].to_s,"01"].join("-")
+            puts "Invalid date in #{file_name}. Inserting current time for Commission Month".red
+            MyLogger.error "Invalid date in #{file_name}. Inserting current time for Commission Month: #{d.strftime("%B %Y")}" 
+            return_date = [d.strftime("%B %Y"), d]
+            return_date 
          end unless m.nil?
          return_date        
      end

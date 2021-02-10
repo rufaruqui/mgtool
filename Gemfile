@@ -8,3 +8,4 @@ gem "typhoeus", "~> 1.3.1"
 gem "elasticsearch", "~> 7.4"
 gem 'awesome_print'
 gem 'colorize'
+gem 'sequel_pg'
