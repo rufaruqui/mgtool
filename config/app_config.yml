@@ -4,21 +4,15 @@
 development:
   EsIndexName: "impcomsn-"
   PG:
-    adapter: 'postgresql' 
-    host: ec2-18-140-35-29.ap-southeast-1.compute.amazonaws.com
-    database: ImportToolTestDb
-    port: 15433
-    user: pgadmin
-    password: F8FvujfkDVHC3BAR
+    adapter: 'postgresql'
+    encoding: unicode
+    host: 43.241.189.198
+    database: ImportToolDb
+    ip: 43.241.189.198
+    port: 11010
+    user: postgres
+    password: HtK5AxyaWFgcwCFT
     timeout: 600000
-  # PG:
-  #   adapter: 'postgresql' 
-  #   host: localhost
-  #   database: railsdb_dev
-  #   port: 5432
-  #   user: railsdb
-  #   password: railsdb@1234
-  #   timeout: 600000
   MYSQL:
     adapter: 'mysql2'
     host: radial-migation.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com

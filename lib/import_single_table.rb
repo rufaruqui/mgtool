@@ -21,7 +21,7 @@ class ImportSingleTable
         end unless data.empty?  
     end
     def self.already_uploaded? name 
-        check = PGDB[:ImportFiles].where(Name:name.split("/").last).count == 1
+        check = PGDB[:ImportFiles].where(Name:name.split("/").last.gsub("_","-")).count == 1
         MyLogger.warn "Already processed file : #{name}" if check
         puts "Already processed file : #{name}".yellow if check
         check

@@ -1,12 +1,12 @@
 require 'active_support/core_ext/hash/indifferent_access'
 
-#APP_ENV = "development"
+APP_ENV = "development"
 
 ## Uncomment it for production
 #APP_ENV = "production"
 
 ## Uncomment it for staging
-APP_ENV = "staging"
+#APP_ENV = "staging"
 
 
 class AppConfig  

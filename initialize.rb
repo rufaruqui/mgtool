@@ -19,15 +19,4 @@ require_relative 'lib/search_client.rb'
 require_relative  'lib/get_broker_map.rb'
 
 
-MSDB = DbService.connect
-PGDB = DbService.pg_connect 
-RADIAL_PG = DbService.rpg_connect 
-BrokerMap = GetBrokerMap.get_broker_map
-
-
 MyLogger = Logger.new(File.open('mgtool.log', File::WRONLY | File::APPEND | File::CREAT))
-
-bh = Hash.new
-MSDB[:Broker].to_a.each { |b| bh[b[:Broker_ID]] = b[:Broker_Name] }
-BrokerHash = bh
-ManufacturerHash = GetBrokerMap.get_manufacturer_reference

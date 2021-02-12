@@ -122,7 +122,7 @@ class ProcessPgAndEsRow
      end
 
      def self.lender_from_manufacturer_ref lender
-          len = ManufacturerHash[lender.strip.downcase.to_sym]
+          len = ManufacturerHash[lender.strip.downcase.to_sym] unless lender.nil?
           len = len.match /(?<lenabb>\(?\w{2,50}?\))/ unless len.nil?
           return (len.nil?)? lender : len[:lenabb][1..-2]
      end
