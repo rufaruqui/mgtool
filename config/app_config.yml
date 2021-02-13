@@ -43,13 +43,14 @@ production:
     timeout: 600000
     port: 3306
   PG:
-    adapter: 'postgresql' 
-    host: ec2-18-140-35-29.ap-southeast-1.compute.amazonaws.com
+    adapter: 'postgresql'
+    encoding: unicode
+    host: 43.241.189.198
     database: ImportToolDb
-    ip: 18.140.35.29 
-    port: 15433
-    user: pgadmin
-    password: F8FvujfkDVHC3BAR
+    ip: 43.241.189.198
+    port: 11010
+    user: postgres
+    password: HtK5AxyaWFgcwCFT
     timeout: 600000
   ES:
      host: 'seekdev0.lbh.one'

@@ -1,14 +1,14 @@
 
 class DbService
-      @@MysqlDB = Sequel.connect(AppConfig.get["MYSQL"])
+     # @@MysqlDB = Sequel.connect(AppConfig.get["MYSQL"])
       @@PgDB = Sequel.connect(AppConfig.get["PG"])
 
     def self.connect(options={})
-        @@MysqlDB
+        Sequel.connect(AppConfig.get["MYSQL"])
     end
 
     def self.mysql_connect(options={})
-        @@MysqlDB
+        Sequel.connect(AppConfig.get["MYSQL"])
     end
     
     def self.pg_connect(options={})
@@ -51,7 +51,7 @@ class DbService
     end
 
    def on_exit
-     @@MysqlDB.disconnect
+    # @@MysqlDB.disconnect
      @@PgDB.disconnect
    end
    
