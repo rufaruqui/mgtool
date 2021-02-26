@@ -15,17 +15,34 @@ development:
     timeout: 600000
   MYSQL:
     adapter: 'mysql2'
-    host: radial-migation.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
+    host: radial-migrationfinal2.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
     database: Apollo
     user: radialadmin
     password: n2pDjKFYzMFAzPbX
     timeout: 600000
     port: 3306
+  # MYSQL:
+  #   adapter: 'mysql2'
+  #   host: radial-migation.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
+  #   database: Apollo
+  #   user: radialadmin
+  #   password: n2pDjKFYzMFAzPbX
+  #   timeout: 600000
+  #   port: 3306
+  # ES:
+  #   url: "http://localhost:9200"
+  #   retry_on_faliure: 5
+  #   request_time_out: 30
+  #   #adapter: :typhoes
   ES:
-    url: "http://localhost:9200"
-    retry_on_faliure: 5
-    request_time_out: 30
-    #adapter: :typhoes
+    host: 'seekdev0.lbh.one'
+    port: '443'
+    user: 'elastic'
+    password: '6nHYWJhv6CbAN3qK'
+    scheme: 'https'
+     #log: true
+    retry_on_failure: 5,
+    request_timeout: 30,
  
 
 ##
@@ -71,12 +88,21 @@ staging:
   EsIndexName: "impcomsn-"
   MYSQL:
     adapter: 'mysql2'
-    host: radial-migation.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
+    host: radial-migrationfinal.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
     database: Apollo
     user: radialadmin
-    password: n2pDjKFYzMFAzPbX
+    password: wyFzU8FtBSR6zTgE
     timeout: 600000
     port: 3306
+    
+  # MYSQL:
+  #   adapter: 'mysql2'
+  #   host: radial-migation.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
+  #   database: Apollo
+  #   user: radialadmin
+  #   password: n2pDjKFYzMFAzPbX
+  #   timeout: 600000
+  #   port: 3306
 
   PG:
     adapter: postgresql

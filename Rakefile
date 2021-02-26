@@ -11,22 +11,21 @@ end
 desc "Import all tables"
 
 task :import_all_tables do 
-   MSDB = DbService.connect
-   PGDB = DbService.pg_connect 
-   RADIAL_PG = DbService.rpg_connect 
-   BrokerMap = GetBrokerMap.get_broker_map
-   bh = Hash.new
-   MSDB[:Broker].to_a.each { |b| bh[b[:Broker_ID]] = b[:Broker_Name] }
-   BrokerHash = bh
-   ManufacturerHash = GetBrokerMap.get_manufacturer_reference
+   
    ImportSingleTable.import_all
+   
+   PGDB.extension :pg_json
+   mod = PGDB[:ImportFiles].where(:Name=>"SCF-FINSURE-JAN199MODIFIED).xls").first[:MessageContent]
+   mod["commissionMonth"] =  "January 19"   unless mod.nil?
+   mod["commissionDate"]  =  "2019-01-01"   unless mod.nil?
+   PGDB[:ImportFiles].where(:Name=>"SCF-FINSURE-JAN199MODIFIED).xls").update(MessageContent: mod) unless mod.nil?
+ 
 end
 
 
 desc "Insert data into elastic search"
 
-task :insert_into_es  do 
- PGDB = DbService.pg_connect
+task :insert_into_es  do  
  SearchClient.insert_all
 end
 
@@ -36,3 +35,10 @@ task :import_all_and_insert_into_es =>[:import_all_tables, :insert_into_es] do
    puts "Imported and then inserted all data into PG and ES".blue
 end
 
+
+
+
+
+######
+### ds = PGDB[:ImportFiles]
+### ds.first[:MessageContent].each { |item| ap item }

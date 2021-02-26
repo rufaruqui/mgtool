@@ -19,7 +19,7 @@ class MyCsvReader
         h = Hash.new
 
         data.each do |d|
-           h[d[:broker_id].to_i] = d
+           h[[d[:broker_id].to_i, d[:aggregator].downcase.to_sym]] = d
         end
         return h
     end

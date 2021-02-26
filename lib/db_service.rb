@@ -1,19 +1,18 @@
 
 class DbService
-     # @@MysqlDB = Sequel.connect(AppConfig.get["MYSQL"])
+      @@MysqlDB = Sequel.connect(AppConfig.get["MYSQL"])
       @@PgDB = Sequel.connect(AppConfig.get["PG"])
 
     def self.connect(options={})
-        Sequel.connect(AppConfig.get["MYSQL"])
+       @@MysqlDB  
     end
 
     def self.mysql_connect(options={})
-        Sequel.connect(AppConfig.get["MYSQL"])
+        @@MysqlDB  
     end
     
     def self.pg_connect(options={})
-        @@PgDB
-        #@@PgDB = Sequel.connect(AppConfig.get[options[:DB]]) unless options.blank?
+        @@PgDB 
     end
 
     def self.rpg_connect(options={})
@@ -21,11 +20,15 @@ class DbService
     end
     
      def self.insert_row row, broker_id
+
        if row[:OrganizationUserId].nil? or row[:TemplateId].nil? or row[:OrganizationUserId] == 0 or row[:TemplateId] == 0
+            
             puts "#{row[:MessageContent][:broker]} -- Ignoring : broker or template doesn't exist".yellow
-            MyLogger.warn "#{row[:MessageContent][:broker]} -- Ignoring : broker or template doesn't exist"
+            MyLogger.warn "File: #{row[:Name]} ---- #{row[:MessageContent][:broker]} -- Ignoring : broker or template doesn't exist"
+
             puts  "BrokerId:#{broker_id}, BrokerName: #{BrokerHash[broker_id]} -- missing in the new system".red if broker_id
-            MyLogger.warn "BrokerId:#{broker_id}, BrokerName: #{BrokerHash[broker_id]} -- missing in the new system" if broker_id
+            MyLogger.error "File: #{row[:Name]} --- BrokerId: #{broker_id}, BrokerName: #{BrokerHash[broker_id]}, AbpUserId: #{row[:OrganizationUserId]}, TemplateId: #{row[:TemplateId]}" if broker_id
+
             return 
         end
           #insert_into_rails_pg row
@@ -51,7 +54,7 @@ class DbService
     end
 
    def on_exit
-    # @@MysqlDB.disconnect
+     @@MysqlDB.disconnect
      @@PgDB.disconnect
    end
    

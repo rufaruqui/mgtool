@@ -9,7 +9,7 @@ class SearchClient
     def self.put_mapping index_name=nil
      index_name = index_name || AppConfig.get["EsIndexName"]
      @@mappings = JSON.parse(File.read("config/es_mappings.json"), symbolize_names: true).freeze
-     @@client.indices.delete index: index_name if @@client.indices.exists? index: index_name
+     #@@client.indices.delete index: index_name if @@client.indices.exists? index: index_name
      @@client.indices.create index: index_name unless @@client.indices.exists? index: index_name
      @@client.indices.put_mapping(index: index_name, body: @@mappings)
     end
@@ -52,12 +52,19 @@ class SearchClient
 
       MyLogger.info "Upserting (Update/Insert) total #{PGDB[:ImportFiles].count} entrins from Postgress"
 
-      PGDB[:ImportFiles].order(id).paged_each(:rows_per_fetch=>50) do |row| 
+      PGDB[:ImportFiles].order(id).paged_each(:rows_per_fetch=>10) do |row| 
           insert_single_row row
       end
     end
+   
     
-end
-#PGDB[:ImportFiles].order(id).paged_each(:rows_per_fetch=>50) { |row| a,b = ProcessPgAndEsRow.
 
+
+end
+
+
+
+#
+#PGDB[:ImportFiles].order(id).paged_each(:rows_per_fetch=>50) { |row| a,b = ProcessPgAndEsRow.
+#Sequel.desc(id)
 # ds.select(:Name).to_a.each { |row| extract_mon_year row[:Name]; MyLogger.info "#{row[:Name]}---->#{a}"; }

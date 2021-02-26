@@ -73,6 +73,8 @@ Import_CSC1:
 # :Commission_Percent, :Net_Amount, :Net_GST, :Net_Total, :GST_Applicable, :Original_CommissionID, :Reason, :Row_Accepted]
 
 
+ 
+
 Import_Choice1:
   aggregator: "Choice"
   aggregatorName: "Choice1"
@@ -86,7 +88,7 @@ Import_Choice1:
     loanAccountNo: :Loan_Number
     totalCommission: :Net_Amount
     commissionType: :Commission_Type
-    loanBalance: :Loan_Balance
+    loanBalance: :Loan_Balance  #if  commissionType == "UC" then loanBalance: :Loan_Amount
     loanAmount: :Loan_Amount
     settlementDate: :Settlement_Date
     lender: :Lender
@@ -107,7 +109,7 @@ Import_Connective2:
   contents: 
     customerName: :Loan_Name
     loanAccountNo: :Acc_Number
-    totalCommission: :Total_Commission
+    totalCommission: :Comm_Paid
     commissionType: :Comm_Type
     loanBalance: :Loan_Balance
     loanAmount: :Loan_Amount
@@ -193,8 +195,8 @@ Import_HLS1:
       # :Representative, :SettleDate, :AccNumber, :AccName, :Status, :Date_Process, :Row_Accepted, :Comm_type] 
 
 Import_Iden1:
-  aggregatorName: "New Iden"
-  aggregator: "Iden"
+  aggregatorName: "Better Choice"
+  aggregator: "BChoice"
   header:
     importDate: :Report_Date
     brokerOrgUserId: :Broker_ID
@@ -215,8 +217,8 @@ Import_Iden1:
 # :Amount, :GST, :Total_Inc_GST, :Row_Accepted] 
 
 Import_Iden2:
-  aggregatorName: "New Iden"
-  aggregator: "IDEN"
+  aggregatorName: "Better Choice"
+  aggregator: "BChoice"
   header:
     importDate: :Report_Date
     brokerOrgUserId: :Broker_ID
@@ -515,13 +517,14 @@ Import_Vow1:
     lender: :Lender
 
  
+
 #  :File_Name, :Broker_ID, :Report_Date, :Row_Number, :Commission_Type, :Tracking_ID, :Client_Name, 
 #  :Funder, :Reference, :Month, :Broker, :Lender_Rate, :Loan_Balance, :Payment, :GST, :Total_Pay, 
 #  :Row_Accepted, :Start_Date_Calculated
 
 Import_eChoice1:
   aggregator: "Choice"
-  aggregatorName: "eChoice"
+  aggregatorName: "Choice"
   header:
     importDate: :Report_Date
     brokerOrgUserId: :Broker_ID
