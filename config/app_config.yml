@@ -88,10 +88,10 @@ staging:
   EsIndexName: "impcomsn-"
   MYSQL:
     adapter: 'mysql2'
-    host: radial-migrationfinal.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
+    host: radial-migrationfinal2.czvptg3xkdzu.ap-southeast-2.rds.amazonaws.com
     database: Apollo
     user: radialadmin
-    password: wyFzU8FtBSR6zTgE
+    password: n2pDjKFYzMFAzPbX
     timeout: 600000
     port: 3306
     
@@ -109,8 +109,8 @@ staging:
     encoding: unicode
     database: ImportToolStageDb
     pool: 5
-    url: "DATABASE_URL:postgresql://postgres:4XfVtpxEeszwPjKR@10.0.0.143:11002/ImportToolStageDb"
-    #DATABASE_URL: "postgresql://postgres:4XfVtpxEeszwPjKR@54.66.136.121:11002/ImportToolStageDb"
+    #url: "DATABASE_URL:postgresql://postgres:4XfVtpxEeszwPjKR@10.0.0.143:11002/ImportToolStageDb"
+    url: "DATABASE_URL:postgresql://postgres:4XfVtpxEeszwPjKR@54.66.136.121:11002/ImportToolStageDb"
     host: 54.66.136.121
     user: postgres
     password: 4XfVtpxEeszwPjKR

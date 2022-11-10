@@ -55,7 +55,7 @@ CommType  = Hash.new;
     CommType[item.downcase.to_sym] = "TC"
 end
 
-["UC", "UPFRONT", "Upfront", "UFC", "Upfront Commissions", "Home Loan - Upfront", "Home Loan", "Deposit Guarantee", "Insurance", "Commercial", "Personal Loan", "Broker Upfront - 100%", "Broker Upfront - 95%", "Broker Upfront- 90%", "Upfronts", "Upfront Data"].each do |item| 
+["UC", "UPFRONT", "Upfront", "UFC", "Upfront Commissions", "Home Loan - Upfront", "Home Loan", "Deposit Guarantee", "Insurance", "Commercial", "Personal Loan", "Broker Upfront - 100%", "Broker Upfront - 95%", "Broker Upfront- 90%", "Upfronts", "Upfront Data", "Upfront Commission"].each do |item| 
     CommType[item.downcase.to_sym] = "UC"
 end
 

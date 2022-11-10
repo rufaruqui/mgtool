@@ -157,7 +157,7 @@ Import_Finsure1:
   contents: 
     customerName: :Client
     loanAccountNo: :Ref_No
-    totalCommission: :Paid_to_Broker
+    totalCommission: :Commission
     commissionType: :Commission_Type_ID  #Lookup Commission Type, make a hash, hard coded "TC" "UC"
     loanBalance: :Loan_Balance
     loanAmount: :Loan_Amount

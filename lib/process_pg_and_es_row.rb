@@ -30,12 +30,12 @@ class ProcessPgAndEsRow
         rh[:TemplateId] = @brokermap[:template_id].to_i
         rh[:FileKey] = set_filekey(file_name)
         rh[:FileType] = (file_name.split(".").last.downcase.to_sym == :xls or :xlsx) ? 2 : 1 
-
           contents = Hash.new
           contents[:name] = rh[:Name]
           contents[:templateId] = rh[:TemplateId]
           contents[:fileKey] = rh[:FileKey]
           contents[:contents] = preapare_nested_contents @data
+          contents[:variations] = []
           contents[:broker] = @brokermap[:business_abbrevation]                         #@data.first[:Broker_ID].to_i
           contents[:importDate] = @data.first[:Report_Date]                             #unless @data.first[:Report_Date].nil?
           contents[:brokerOrgUserId] = @brokermap[:user_org_id].to_i
@@ -55,8 +55,8 @@ class ProcessPgAndEsRow
 
               if @table_name == :Import_RZ1 
                 data.each { |d| nested_contents<< prepare_data_for_contents_import_red_zed(d) }
-              elsif   @table_name == :Import_Connective2
-                data.each { |d| nested_contents<< prepare_data_for_contents_connective(d) }
+              elsif   @table_name == :Import_Choice1
+                data.each { |d| nested_contents<< prepare_data_for_contents_choice(d) }
               else 
                  data.each { |d|  nested_contents << prepare_data_for_contents(d) }
               end
@@ -137,7 +137,7 @@ class ProcessPgAndEsRow
      end
 
 
-       def self.prepare_data_for_contents_connective d 
+       def self.prepare_data_for_contents_choice d 
           ch = Hash.new
           ch[:customerName] =    d[@cols[:contents][:customerName]]
           ch[:loanAccountNo] =   d[@cols[:contents][:loanAccountNo]]
